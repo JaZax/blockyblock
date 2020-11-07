@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 import { gsap } from 'gsap'
 
 import './style.scss'
-import Block from './components/block'
+import Block from './components/block.js'
 
 class App extends React.Component {
     render(){
-        const elements = new Array(20);
+        const elements = new Array(40);
 
         const items = []
 
