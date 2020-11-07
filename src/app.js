@@ -7,11 +7,17 @@ import Block from './components/block'
 
 class App extends React.Component {
     render(){
-        const times = (length, fn) => Array.from({ length }, (_, i) => fn(i));
+        const elements = new Array(20);
+
+        const items = []
+
+        for (const [index] of elements.entries()) {
+            items.push(<Block id={index}></Block>)
+        }
 
         return(
             <>
-                {Array(20).fill(<Block id={this.length}/>)}
+                {items}
             </>
         )
     }
