@@ -7,9 +7,11 @@ import Block from './components/block'
 
 class App extends React.Component {
     render(){
+        const times = (length, fn) => Array.from({ length }, (_, i) => fn(i));
+
         return(
             <>
-                <Block id="1"></Block>
+                {Array(20).fill(<Block id={this.length}/>)}
             </>
         )
     }
