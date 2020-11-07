@@ -3,4 +3,11 @@ body{
     padding: 0;
     background: #0f0f0f;
     color: white;
+    #App{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        .block{
+            border: solid red;
+        }
+    }
 }

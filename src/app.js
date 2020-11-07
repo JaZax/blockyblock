@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom'
 import { gsap } from 'gsap'
 
 import './style.scss'
-import Placeholder from './components/Placeholder'
+import Block from './components/block'
 
-const App = () => {
-
-    return (
-        <div className="App" >
-            <Placeholder />
-        </div>
-    )
+class App extends React.Component {
+    render(){
+        return(
+            <>
+                <Block id="1"></Block>
+            </>
+        )
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById('App'))
