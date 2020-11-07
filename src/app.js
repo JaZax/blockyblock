@@ -6,6 +6,7 @@ import './style.scss'
 import Block from './components/block.js'
 
 class App extends React.Component {
+
     render(){
         const elements = new Array(40);
 
