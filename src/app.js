@@ -8,48 +8,46 @@ class App extends React.Component {
     constructor(props){
         super(props)
 
-        this.appRef = React.createRef()
+        this.inputRef = React.createRef()
+        this.clickedBlocks = []
     }
 
     componentDidMount() {
         document.body.addEventListener('click', (e)=>{
-            //this.blockRef.current.style.border = 'solid green'
-            console.log(e.target)
-            //console.log(this.appRef.current)
+            if(this.clickedBlocks.includes(e.target) == false){
+                this.clickedBlocks.push(e.target)
+            }else{
+                let indexToDelete = this.clickedBlocks.indexOf(e.target)
+                this.clickedBlocks.splice(indexToDelete, 1)
+            }
+            console.log(this.clickedBlocks)
+        })
+
+        this.inputRef.current.addEventListener('input', ()=>{
+            console.log(this.inputRef.current.value)
         })
     }
     
     componentWillUnmount() {
         document.body.removeEventListener("click");
+        this.inputRef.current.removeEventListener("input")
     }
 
     render(){
         const elements = new Array(40);
-
         const items = []
-
         for (const [index] of elements.entries()) {
-            let classString = ''
-
-            if(index < 8){
-                classString = 'block row1'
-            }else if(index < 16 && index >= 8){
-                classString = 'block row2'
-            }else if(index < 24 && index >= 16){
-                classString = 'block row3'
-            }else if(index < 32 && index >= 24){
-                classString = 'block row4'
-            }else if(index < 40 && index >= 32){
-                classString = 'block row5'
-            }
-            
-            items.push(<Block class={classString} id={index}></Block>)
+            items.push(<Block id={index}></Block>)
         }
 
         return(
-            <div id="wrap" ref={this.appRef}>
-                {items}
-            </div>
+            <>
+                <input ref={this.inputRef} min="20" max="200" type="range"></input>
+
+                <div id="wrap">
+                    {items}
+                </div>
+            </>
         )
     }
 }

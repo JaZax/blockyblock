@@ -9,21 +9,9 @@ body{
             height: 100vh;
             .block{
                 border: solid #0f0f0f;
-            }
-            .row1{
-                background: #1A535C;
-            }
-            .row2{
-                background: #4ECDC4
-            }
-            .row3{
-                background: #F7FFF7;
-            }
-            .row4{
-                background: #FF6B6B;
-            }
-            .row5{
-                background: #FFE66D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

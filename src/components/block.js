@@ -5,8 +5,8 @@ class Block extends React.Component {
     constructor(props){
         super(props)
 
-        this.blockRef = React.createRef();
-        this.idString = ''
+        //this.blockRef = React.createRef();
+        //this.idString = ''
 
     }
 
@@ -25,7 +25,9 @@ class Block extends React.Component {
 
     render(){
         return(
-            <div ref={this.blockRef} className={this.props.class} id={this.props.id}></div>
+            <div ref={this.blockRef} className="block" id={this.props.id}>
+                <h1>{this.props.id}</h1>
+            </div>
         )
     }
 }
