@@ -15,6 +15,17 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        for(let i = 0; i < 8; i++){
+            let currentColumn = []
+            //console.log(i)
+            for(let a = i; a <= i + 32; a += 8){
+                currentColumn.push(document.getElementById(a))
+            }
+
+            this.columns.push(currentColumn)
+        }
+        console.log(this.columns)
+
         document.body.addEventListener('click', (e)=>{
             if(e.target.id % 1 == 0){
                 if(this.clickedBlocks.includes(e.target) == false){
