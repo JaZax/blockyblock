@@ -9,20 +9,24 @@ class App extends React.Component {
         super(props)
 
         this.inputRef = React.createRef()
+
         this.clickedBlocks = []
+        this.columns = []
     }
 
     componentDidMount() {
         document.body.addEventListener('click', (e)=>{
-            if(this.clickedBlocks.includes(e.target) == false){
-                this.clickedBlocks.push(e.target)
-                e.target.style.border = "solid red"
-            }else{
-                let indexToDelete = this.clickedBlocks.indexOf(e.target)
-                this.clickedBlocks.splice(indexToDelete, 1)
-                e.target.style.border = "solid black"
+            if(e.target.id % 1 == 0){
+                if(this.clickedBlocks.includes(e.target) == false){
+                    this.clickedBlocks.push(e.target)
+                    e.target.style.border = "solid red"
+                }else{
+                    let indexToDelete = this.clickedBlocks.indexOf(e.target)
+                    this.clickedBlocks.splice(indexToDelete, 1)
+                    e.target.style.border = "solid black"
+                }
+                console.log(this.clickedBlocks)
             }
-            console.log(this.clickedBlocks)
         })
 
         this.inputRef.current.addEventListener('input', ()=>{
@@ -44,7 +48,7 @@ class App extends React.Component {
 
         return(
             <>
-                <input ref={this.inputRef} min="20" max="200" type="range"></input>
+                <input ref={this.inputRef} min="20" max="200" type="range" id="bpmInput"></input>
 
                 <div id="wrap">
                     {items}
