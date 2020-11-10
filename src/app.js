@@ -64,7 +64,11 @@ class App extends React.Component {
                     this.currentColumn = 0
                 }
 
-                console.log(this.columns[this.currentColumn])
+                for(let i = 0; i < this.clickedBlocks.length; i++){
+                    console.log(this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
+                }
+
+                //console.log(this.columns[this.currentColumn])
             }, 60000 / this.inputRef.current.value))
         })
     }
