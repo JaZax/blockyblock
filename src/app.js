@@ -8,12 +8,14 @@ class App extends React.Component {
     constructor(props){
         super(props)
 
-        this.inputRef = React.createRef()
-        this.btnClearRef = React.createRef()
+        this.inputRef = React.createRef();
+        this.btnClearRef = React.createRef();
 
-        this.clickedBlocks = []
-        this.columns = []
-        this.intervals = []
+        this.clickedBlocks = [];
+        this.columns = [];
+        this.intervals = [];
+
+        this.currentColumn = 0;
     }
 
     componentDidMount() {
@@ -42,7 +44,12 @@ class App extends React.Component {
         })
 
         this.btnClearRef.current.addEventListener('click', ()=>{
+            this.clickedBlocks.forEach((block)=>{
+                block.style.border = 'solid black'
+            })
+
             this.clickedBlocks = []
+            console.log('cleared!')
         })
 
         this.inputRef.current.addEventListener('input', ()=>{
@@ -51,8 +58,13 @@ class App extends React.Component {
             }
     
             this.intervals.push(setInterval(()=>{
-                console.log('elo')
-    
+                if(this.currentColumn < 7){
+                    this.currentColumn++
+                }else{
+                    this.currentColumn = 0
+                }
+
+                console.log(this.columns[this.currentColumn])
             }, 60000 / this.inputRef.current.value))
         })
     }
