@@ -9,15 +9,16 @@ class App extends React.Component {
         super(props)
 
         this.inputRef = React.createRef()
+        this.btnClearRef = React.createRef()
 
         this.clickedBlocks = []
         this.columns = []
+        this.intervals = []
     }
 
     componentDidMount() {
         for(let i = 0; i < 8; i++){
             let currentColumn = []
-            //console.log(i)
             for(let a = i; a <= i + 32; a += 8){
                 currentColumn.push(document.getElementById(a))
             }
@@ -40,17 +41,30 @@ class App extends React.Component {
             }
         })
 
+        this.btnClearRef.current.addEventListener('click', ()=>{
+            this.clickedBlocks = []
+        })
+
         this.inputRef.current.addEventListener('input', ()=>{
-            console.log(this.inputRef.current.value)
+            for(let i = 0; i < this.intervals.length; i++){
+                window.clearInterval(this.intervals[i])
+            }
+    
+            this.intervals.push(setInterval(()=>{
+                console.log('elo')
+    
+            }, 60000 / this.inputRef.current.value))
         })
     }
     
     componentWillUnmount() {
         document.body.removeEventListener("click");
         this.inputRef.current.removeEventListener("input")
+        this.btnClearRef.current.removeEventListener("click")
     }
 
     render(){
+
         const elements = new Array(40);
         const items = []
         for (const [index] of elements.entries()) {
@@ -59,7 +73,8 @@ class App extends React.Component {
 
         return(
             <>
-                <input ref={this.inputRef} min="20" max="200" type="range" id="bpmInput"></input>
+                <input ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
+                <button ref={this.btnClearRef} id="btnClear">clear</button>
 
                 <div id="wrap">
                     {items}
