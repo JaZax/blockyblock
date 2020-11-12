@@ -2,16 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Pizzicato from 'pizzicato'
 
+import sounds from './sounds.js'
 import './style.scss'
 import Block from './components/block.js'
-
-const sound = new Pizzicato.Sound({
-    source: 'wave',
-    options: {
-        type: 'triangle',
-        frequency: 440
-    }
-})
 
 class App extends React.Component {
     constructor(props){
@@ -29,6 +22,8 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        console.log(sounds)
+
         for(let i = 0; i < 8; i++){
             let currentColumn = []
             for(let a = i; a <= i + 32; a += 8){
@@ -86,13 +81,10 @@ class App extends React.Component {
                     if(this.columns[this.currentColumn].includes(this.clickedBlocks[i])){
                         for(let a = 0; a < this.rows.length; a++){
                             if(this.rows[a].includes(this.clickedBlocks[i])){
-                                //[a]
-                                if(a == 1) sound.play() ; setTimeout(()=>{sound.stop()}, 100)
-                                console.log('row: ' + a + ' ' + this.rows[a].includes(this.clickedBlocks[i]))
+                                sounds[a].play() 
+                                setTimeout(()=>{sounds[a].stop()}, 100)
                             }
                         }
-
-                        //console.log('column: ' + this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
                     }
                 }
             }, 60000 / this.inputRef.current.value))
