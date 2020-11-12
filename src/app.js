@@ -13,6 +13,7 @@ class App extends React.Component {
 
         this.clickedBlocks = [];
         this.columns = [];
+        this.rows = [];
         this.intervals = [];
 
         this.currentColumn = 0;
@@ -27,7 +28,17 @@ class App extends React.Component {
 
             this.columns.push(currentColumn)
         }
-        console.log(this.columns)
+
+        for(let i = 0; i <= 32; i += 8){
+            let currentRow = []
+            for(let a = i; a <= i + 7; a++){
+                currentRow.push(document.getElementById(a))
+            }
+
+            this.rows.push(currentRow)
+        }
+
+        console.log(this.rows)
 
         document.body.addEventListener('click', (e)=>{
             if(e.target.id % 1 == 0){
@@ -65,7 +76,9 @@ class App extends React.Component {
                 }
 
                 for(let i = 0; i < this.clickedBlocks.length; i++){
-                    console.log(this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
+                    if(this.columns[this.currentColumn].includes(this.clickedBlocks[i])){
+                        console.log(this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
+                    }
                 }
 
                 //console.log(this.columns[this.currentColumn])
