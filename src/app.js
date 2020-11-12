@@ -1,8 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Pizzicato from 'pizzicato'
 
 import './style.scss'
 import Block from './components/block.js'
+
+const sound = new Pizzicato.Sound({
+    source: 'wave',
+    options: {
+        type: 'triangle',
+        frequency: 440
+    }
+})
 
 class App extends React.Component {
     constructor(props){
@@ -38,8 +47,6 @@ class App extends React.Component {
             this.rows.push(currentRow)
         }
 
-        console.log(this.rows)
-
         document.body.addEventListener('click', (e)=>{
             if(e.target.id % 1 == 0){
                 if(this.clickedBlocks.includes(e.target) == false){
@@ -50,7 +57,7 @@ class App extends React.Component {
                     this.clickedBlocks.splice(indexToDelete, 1)
                     e.target.style.border = "solid black"
                 }
-                console.log(this.clickedBlocks)
+                //console.log(this.clickedBlocks)
             }
         })
 
@@ -77,11 +84,17 @@ class App extends React.Component {
 
                 for(let i = 0; i < this.clickedBlocks.length; i++){
                     if(this.columns[this.currentColumn].includes(this.clickedBlocks[i])){
-                        console.log(this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
+                        for(let a = 0; a < this.rows.length; a++){
+                            if(this.rows[a].includes(this.clickedBlocks[i])){
+                                //[a]
+                                if(a == 1) sound.play() ; setTimeout(()=>{sound.stop()}, 100)
+                                console.log('row: ' + a + ' ' + this.rows[a].includes(this.clickedBlocks[i]))
+                            }
+                        }
+
+                        //console.log('column: ' + this.currentColumn + ' ' + this.columns[this.currentColumn].includes(this.clickedBlocks[i]))
                     }
                 }
-
-                //console.log(this.columns[this.currentColumn])
             }, 60000 / this.inputRef.current.value))
         })
     }
