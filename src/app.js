@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Pizzicato from 'pizzicato'
 
 import sounds from './sounds.js'
 import './style.scss'
@@ -56,7 +55,7 @@ class App extends React.Component {
 
         this.btnClearRef.current.addEventListener('click', ()=>{
             this.clickedBlocks.forEach((block)=>{
-                block.style.border = 'solid black'
+                block.style.background = "transparent"
             })
 
             this.clickedBlocks = []
