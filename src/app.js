@@ -45,11 +45,11 @@ class App extends React.Component {
             if(e.target.id % 1 == 0){
                 if(this.clickedBlocks.includes(e.target) == false){
                     this.clickedBlocks.push(e.target)
-                    e.target.style.border = "solid red"
+                    e.target.style.background = "#ffffff80"
                 }else{
                     let indexToDelete = this.clickedBlocks.indexOf(e.target)
                     this.clickedBlocks.splice(indexToDelete, 1)
-                    e.target.style.border = "solid black"
+                    e.target.style.background = "transparent"
                 }
             }
         })
