@@ -22,7 +22,6 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        console.log(sounds)
 
         for(let i = 0; i < 8; i++){
             let currentColumn = []
@@ -52,7 +51,6 @@ class App extends React.Component {
                     this.clickedBlocks.splice(indexToDelete, 1)
                     e.target.style.border = "solid black"
                 }
-                //console.log(this.clickedBlocks)
             }
         })
 
@@ -62,7 +60,6 @@ class App extends React.Component {
             })
 
             this.clickedBlocks = []
-            console.log('cleared!')
         })
 
         this.inputRef.current.addEventListener('input', ()=>{
@@ -109,6 +106,14 @@ class App extends React.Component {
             <>
                 <input ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
                 <button ref={this.btnClearRef} id="btnClear">clear</button>
+
+                <div id="colors">
+                    <div id="row1" className="row"></div>
+                    <div id="row2" className="row"></div>
+                    <div id="row3" className="row"></div>
+                    <div id="row4" className="row"></div>
+                    <div id="row5" className="row"></div>
+                </div>
 
                 <div id="wrap">
                     {items}

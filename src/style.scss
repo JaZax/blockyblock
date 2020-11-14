@@ -2,13 +2,38 @@ body{
     margin: 0;
     padding: 0;
     #App{
+        #colors{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            .row{
+            }
+            #row1{
+                background: #1A535C;
+            }
+            #row2{
+                background: #4ECDC4
+            }
+            #row3{
+                background: #F7FFF7;
+            }
+            #row4{
+                background: #FF6B6B;
+            }
+            #row5{
+                background: #FFE66D;
+            }
+        }
         #wrap{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
             height: 100vh;
             .block{
-                border: solid #0f0f0f;
+                //border: solid #0f0f0f;
                 display: flex;
                 justify-content: center;
                 align-items: center;

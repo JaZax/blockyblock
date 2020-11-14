@@ -26,7 +26,9 @@ class Block extends React.Component {
     render(){
         return(
             <div ref={this.blockRef} className="block" id={this.props.id}>
-                <h1>{this.props.id}</h1>
+                {/*
+                    <h1>{this.props.id}</h1>
+                */}
             </div>
         )
     }
