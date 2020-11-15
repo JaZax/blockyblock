@@ -11,7 +11,7 @@ class App extends React.Component {
 
         this.inputRef = React.createRef();
         this.btnClearRef = React.createRef();
-        this.state = {}
+        this.state = { bpm: 0 }
 
         this.clickedBlocks = [];
         this.columns = [];
@@ -63,6 +63,8 @@ class App extends React.Component {
         })
 
         this.inputRef.current.addEventListener('input', ()=>{
+            this.setState({bpm: this.inputRef.current.value})
+
             for(let i = 0; i < this.intervals.length; i++){
                 window.clearInterval(this.intervals[i])
             }
@@ -105,8 +107,9 @@ class App extends React.Component {
         return(
             <>
                 <div id="menu">
-                    <input ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
-                    <button ref={this.btnClearRef} id="btnClear">clear</button>
+                    <input className="menuItem" ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
+                    <h3 className="menuItem">{this.state.bpm}</h3>
+                    <button className="menuItem" ref={this.btnClearRef} id="btnClear">clear</button>
                 </div>
 
                 <div id="colors">

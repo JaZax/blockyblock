@@ -4,6 +4,12 @@ body{
     #App{
         #menu{
             height: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .menuItem{
+                width: 10%;
+            }
         }
         #colors{
             width: 100%;
