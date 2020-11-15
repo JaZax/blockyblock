@@ -2,36 +2,37 @@ body{
     margin: 0;
     padding: 0;
     #App{
+        #menu{
+            height: 5vh;
+        }
         #colors{
             width: 100%;
-            height: 100vh;
+            height: 95vh;
             position: absolute;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-            .row{
-            }
             #row1{
-                background: #FF9A85;
+                background: #9B5DE5;
             }
             #row2{
-                background: #FFD785
+                background: #F15BB5
             }
             #row3{
-                background: #EAFF85;
+                background: #FEE440;
             }
             #row4{
-                background: #ADFF85;
+                background: #00BBF9;
             }
             #row5{
-                background: #85FFD7;
+                background: #00F5D4;
             }
         }
         #wrap{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-            height: 100vh;
+            height: 95vh;
             .block{
                 //border: solid #0f0f0f;
                 display: flex;

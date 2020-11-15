@@ -11,6 +11,7 @@ class App extends React.Component {
 
         this.inputRef = React.createRef();
         this.btnClearRef = React.createRef();
+        this.state = {}
 
         this.clickedBlocks = [];
         this.columns = [];
@@ -103,8 +104,10 @@ class App extends React.Component {
 
         return(
             <>
-                <input ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
-                <button ref={this.btnClearRef} id="btnClear">clear</button>
+                <div id="menu">
+                    <input ref={this.inputRef} min="20" max="400" type="range" id="bpmInput"></input>
+                    <button ref={this.btnClearRef} id="btnClear">clear</button>
+                </div>
 
                 <div id="colors">
                     <div id="row1" className="row"></div>
